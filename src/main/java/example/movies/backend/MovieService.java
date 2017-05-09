@@ -23,16 +23,7 @@ public class MovieService {
     }
 
     private CypherExecutor createCypherExecutor(String uri) {
-        try {
-            String auth = new URL(uri.replace("bolt","http")).getUserInfo();
-            if (auth != null) {
-                String[] parts = auth.split(":");
-                return new BoltCypherExecutor(uri,parts[0],parts[1]);
-            }
-            return new BoltCypherExecutor(uri);
-        } catch (MalformedURLException e) {
-            throw new IllegalArgumentException("Invalid Neo4j-ServerURL " + uri);
-        }
+        return new BoltCypherExecutor(uri,"neo4j","software");
     }
 
     public Map findMovie(String title) {

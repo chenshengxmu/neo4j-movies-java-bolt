@@ -16,12 +16,7 @@ public class Util {
     }
 
     public static String getNeo4jUrl() {
-        String urlVar = System.getenv("NEO4J_URL_VAR");
-        if (urlVar==null) urlVar = "NEO4J_URL";
-        String url =  System.getenv(urlVar);
-        if(url == null || url.isEmpty()) {
-            return DEFAULT_URL;
-        }
-        return url;
+
+        return "bolt://10.232.22.46:7687";
     }
 }
